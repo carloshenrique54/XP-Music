@@ -1,0 +1,40 @@
+aside{
+    display: flex;
+    flex-direction: column;
+    background-color: #140027;
+    width: 10%;
+    height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;    
+}
+
+aside h1{
+    margin: 0;
+    font-family: "Oxanium";
+    color: #F3E7FF;
+    font-size: 5rem;
+    margin: 20px auto 10px 10px;
+    text-shadow: 0px 5px 0px #CC7EFC;
+}
+
+aside li .linksSidebar{
+    font-size: 1.25rem;
+    list-style: none;
+    color: #F3E7FF;
+    text-decoration: none;
+    font-family: "Inter";
+    transition: ease 0.3s;  
+}
+
+aside li .linksSidebar:hover{
+    color: #CC7EFC;
+}
+
+aside li{
+    margin-bottom: 28px;
+    list-style: none;
+}
+
+aside ul{
+    padding: 0px 15px;
+}
