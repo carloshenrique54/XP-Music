@@ -1,9 +1,8 @@
-import supabase from "../services/supabase"
-import "../styles/Login.css"
+import "../styles/Cadastro.css"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-function Login(){
+function Cadastro(){
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
 
@@ -23,19 +22,31 @@ function Login(){
     return(
         <main>
             <form action="submit" onSubmit={realizarLogin}>
-                <h1>Login</h1>
+                <h1>Cadastro</h1>
                 <div className="formInputs">
                     <div className="inputBox">
+                        <label htmlFor="email">Nome</label>
+                        <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="exemplo@gmail.com"/>
+                    </div>
+                    <div className="inputBox">
                         <label htmlFor="email">E-mail</label>
+                        <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="exemplo@gmail.com"/>
+                    </div>
+                    <div className="inputBox">
+                        <label htmlFor="password">CEP</label>
+                        <input value={senha} onChange={e => setSenha(e.target.value)} type="password" placeholder="Mínimo 8 caracteres"/>
+                    </div>
+                    <div className="inputBox">
+                        <label htmlFor="email">CPF</label>
                         <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="exemplo@gmail.com"/>
                     </div>
                     <div className="inputBox">
                         <label htmlFor="password">Senha</label>
                         <input value={senha} onChange={e => setSenha(e.target.value)} type="password" placeholder="Mínimo 8 caracteres"/>
                     </div>
-                    <button>Fazer login</button>
+                    <button>Fazer cadastro</button>
                     <div className="links">
-                        <Link className="link" to={"/cadastro"}>Realizar cadastro</Link>
+                        <Link className="link" to={"/"}>Realizar login</Link>
                         <Link className="link" to={"/redefinirsenha"}>Esqueci a senha</Link>
                     </div>
                 </div>
@@ -44,4 +55,4 @@ function Login(){
     )
 }
 
-export default Login
+export default Cadastro
