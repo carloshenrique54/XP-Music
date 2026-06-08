@@ -1,3 +1,36 @@
-form{
-    width: 30%;
+.cadastroForm{
+    width: 45%;
+    padding: 20px 30px;
+}
+
+.cadastroForm .formInputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastroForm .formInputs .inputBox{
+    width: 100%;
+}
+
+
+.cadastroForm input{
+    width: 94%;
+}
+
+.bottomForms{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.bottomForms button{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.cadastroForm .links{
+    margin-top: 10px;
+    width: 100%;
 }

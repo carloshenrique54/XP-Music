@@ -23,12 +23,15 @@ form{
 
 form h1{
     color: #F3E7FF;
-    font-family: sans-serif;
+    font-family: "Oxanium";
+    font-size: 2.8rem;
+    margin: 0;
+    margin-top: 20px;
 }
 
 form label{
     color: #F3E7FF;
-    font-family: sans-serif;
+    font-family: "Inter";
 }
 
 form input{
@@ -39,6 +42,7 @@ form input{
     outline: none;
     transition: ease 0.2s;
     margin-top: 5px;
+    font-family: "Inter";
 }
 
 form input:focus{

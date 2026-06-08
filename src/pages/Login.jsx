@@ -1,23 +1,41 @@
 import supabase from "../services/supabase"
 import "../styles/Login.css"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Login(){
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
+    const navigate = useNavigate()
 
     async function realizarLogin(e){
         e.preventDefault()
+        if (!senha) {alert("Insira sua senha"); return}
+        if (!email) {alert("Coloque um email"); return}
 
         const {data: resposta, error} = await supabase
             .from("usuarios")
-            .select("email")
+            .select("*")
+            .eq("senha", senha)
             .eq("email", email)
+            .maybeSingle()
 
         if (error){
             alert("Erro: ", error)
+            return
         }
+
+        if (!resposta){
+            alert("Conta não localizada")
+            return
+        }
+
+        alert("Login realizado com sucesso!")
+
+        const usuario = { email, senha, id: resposta.id }; 
+        localStorage.setItem("usuario", JSON.stringify(usuario))
+
+        navigate("/inicio")
     }
 
     return(
