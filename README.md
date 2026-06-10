@@ -110,6 +110,15 @@ XP-Music/
 | `[ Dev ]` Carlos Henrique |
 |:---:|
 
+| `[ Dev ]` João Lucas |
+|:---:|
+
+| `[ Dev ]` Gustavo Leite |
+|:---:|
+
+| `[ Dev ]` Luiz Felipe |
+|:---:|
+
 </div>
 
 ---
