@@ -1,99 +1,233 @@
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-image: url("../assets/images/fundo_login.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;    
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-primario);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(163, 65, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(204, 126, 252, 0.06) 0%, transparent 50%);
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    background-image: linear-gradient(to right, #140027 , #140027);
-    margin: auto;
-    padding: 20px 5px;
-    gap: 5px;
-    align-items: center;
-    border-radius: 10px;
+.loginContainer {
+  display: flex;
+  width: 860px;
+  min-height: 520px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 40px var(--cor-glow);
+  border: 1px solid var(--borda);
 }
 
-form h1{
-    color: #F3E7FF;
-    font-family: "Oxanium";
-    font-size: 2.8rem;
-    margin: 0;
-    margin-top: 20px;
+.loginLeft {
+  flex: 1;
+  background-image: linear-gradient(135deg, rgba(10, 0, 21, 0.85), rgba(132, 49, 208, 0.6)), url("../assets/images/login_lateral.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
 }
 
-form label{
-    color: #F3E7FF;
-    font-family: "Inter";
+
+@keyframes pulsar {
+  0%, 100% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
 }
 
-form input{
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    border: solid 3px transparent;
-    outline: none;
-    transition: ease 0.2s;
-    margin-top: 5px;
-    font-family: "Inter";
+.loginBrand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  text-align: center;
 }
 
-form input:focus{
-    border-color: #8431D0;
+.loginLogoIcon {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--texto-primario);
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.formInputs{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+.loginLogoText {
+  font-family: "Oxanium";
+  font-size: 3.5rem;
+  color: var(--texto-primario);
+  text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.3);
+  line-height: 1;
 }
 
-.inputBox{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
+.loginLogoText span {
+  font-size: 1rem;
+  letter-spacing: 8px;
+  display: block;
+  margin-top: 4px;
+  color: var(--cor-secundaria);
 }
 
-button{
-    width: 90%;
-    background-image: linear-gradient(to right, #A341FF, #8431D0);
-    color: #F3E7FF;
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    transition: ease 0.3s;
+.loginSlogan {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 16px;
 }
 
-button:hover{
-    transform: scale(1.03, 1.03);
-    box-shadow: 0px 0px 10px #cc7efc5e;
+.loginRight {
+  flex: 1;
+  background: var(--bg-secundario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
-.links{
-    display: flex;
-    width: 90%;
-    font-family: sans-serif;
-    justify-content: space-between;
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  align-items: stretch;
 }
 
-.link{
-    color: #F3E7FF;
-    text-decoration: none;
-    transition: ease 0.3s;
+.loginForm h2 {
+  font-family: "Oxanium";
+  font-size: 1.8rem;
+  color: var(--texto-primario);
+  margin-bottom: 0;
 }
 
-.link:hover{
-    color: #CC7EFC;
-    text-shadow: 0px 0px 10px #cc7efc6b;
+.loginSubtitle {
+  color: var(--texto-secundario);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.redefinirIcone {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputBox label {
+  color: var(--texto-secundario);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: "Inter";
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-primario);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 0 14px;
+  transition: all 0.25s ease;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 15px rgba(163, 65, 255, 0.15);
+}
+
+.inputIcon {
+  color: var(--texto-terciario);
+  font-size: 0.85rem;
+}
+
+.inputWrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  color: var(--texto-primario);
+  font-family: "Inter";
+  font-size: 0.9rem;
+}
+
+.inputWrapper input::placeholder {
+  color: var(--texto-terciario);
+}
+
+.btnPrincipal {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  color: white;
+  font-family: "Inter";
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(163, 65, 255, 0.3);
+}
+
+.btnPrincipal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(163, 65, 255, 0.45);
+}
+
+.btnPrincipal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.link {
+  color: var(--texto-secundario);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.25s ease;
+}
+
+.link:hover {
+  color: var(--cor-secundaria);
+  text-shadow: 0 0 10px var(--cor-glow);
 }

@@ -1,0 +1,185 @@
+.favoritosPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primario);
+  overflow-y: auto;
+  padding: 0 30px 100px 30px;
+}
+
+.favoritosHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 0 24px 0;
+}
+
+.favoritosHeaderIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(163,65,255,0.3);
+}
+
+.favoritosHeader h1 {
+  font-family: "Oxanium";
+  font-size: 1.8rem;
+  color: var(--texto-primario);
+}
+
+.favoritosHeader p {
+  color: var(--texto-secundario);
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+.favoritosConteudo { flex: 1; }
+
+.favoritosVazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  gap: 12px;
+  text-align: center;
+}
+
+.favoritosVazioIcon {
+  font-size: 3rem;
+  color: var(--borda);
+  margin-bottom: 8px;
+}
+
+.favoritosVazio h2 {
+  font-family: "Oxanium";
+  color: var(--texto-secundario);
+  font-size: 1.3rem;
+}
+
+.favoritosVazio p {
+  color: var(--texto-terciario);
+  font-size: 0.9rem;
+}
+
+.favoritosLista {
+  display: flex;
+  flex-direction: column;
+}
+
+.favoritosListaHeader {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 100px;
+  gap: 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--borda);
+  color: var(--texto-terciario);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.favoritoItem {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 100px;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.favoritoItem:hover {
+  background: var(--bg-card);
+}
+
+.favoritoItemAtivo {
+  background: rgba(163,65,255,0.08);
+}
+
+.favColNum {
+  color: var(--texto-terciario);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.favoritoInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.favoritoCapa {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.favoritoTitulo {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--texto-primario);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.favColArtista {
+  color: var(--texto-secundario);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.favColAcoes {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.favBtnPlay, .favBtnRemover {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  padding: 0;
+  box-shadow: none;
+}
+
+.favBtnPlay {
+  background: rgba(163,65,255,0.15);
+  color: var(--cor-primaria);
+}
+
+.favBtnPlay:hover {
+  background: var(--cor-primaria);
+  color: white;
+  transform: none;
+}
+
+.favBtnRemover {
+  background: rgba(255,71,87,0.1);
+  color: var(--erro);
+}
+
+.favBtnRemover:hover {
+  background: var(--erro);
+  color: white;
+  transform: none;
+}

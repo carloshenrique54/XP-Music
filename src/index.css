@@ -7,3 +7,63 @@
   font-family: Oxanium;
   src: url("./assets/fonts/Oxanium.ttf");
 }
+
+:root {
+  --bg-primario: #0A0015;
+  --bg-secundario: #140027;
+  --bg-terciario: #1E003D;
+  --bg-card: #1A0033;
+  --bg-card-hover: #220042;
+  --cor-primaria: #A341FF;
+  --cor-secundaria: #CC7EFC;
+  --cor-destaque: #8431D0;
+  --cor-glow: #cc7efc3d;
+  --texto-primario: #F3E7FF;
+  --texto-secundario: #B8A0CC;
+  --texto-terciario: #7A6690;
+  --borda: #2D1050;
+  --sucesso: #4ECB71;
+  --erro: #FF4757;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primario);
+  color: var(--texto-primario);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cor-destaque);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cor-primaria);
+}
+
+::selection {
+  background: var(--cor-primaria);
+  color: white;
+}

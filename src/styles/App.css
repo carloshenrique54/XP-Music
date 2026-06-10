@@ -1,3 +1,19 @@
-body{
-  margin: 0;
+.appLayout {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.appConteudo {
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.appConteudo.comSidebar {
+  height: calc(100vh - 80px);
 }

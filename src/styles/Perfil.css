@@ -1,0 +1,217 @@
+.perfilPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primario);
+  overflow-y: auto;
+  padding: 30px 30px 100px 30px;
+}
+
+.perfilContainer {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.perfilCard {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+}
+
+.perfilAvatarGrande {
+  width: 90px;
+  height: 90px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oxanium";
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 30px rgba(163,65,255,0.3);
+}
+
+.perfilCard h1 {
+  font-family: "Oxanium";
+  font-size: 1.4rem;
+  color: var(--texto-primario);
+  margin-bottom: 4px;
+}
+
+.perfilEmail {
+  color: var(--texto-secundario);
+  font-size: 0.82rem;
+  margin-bottom: 24px;
+}
+
+.perfilStats {
+  display: flex;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+  width: 100%;
+  justify-content: center;
+}
+
+.perfilStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfilStatNum {
+  font-family: "Oxanium";
+  font-size: 1.5rem;
+  color: var(--cor-primaria);
+  font-weight: 700;
+}
+
+.perfilStatLabel {
+  font-size: 0.75rem;
+  color: var(--texto-terciario);
+  margin-top: 2px;
+}
+
+.perfilDetalhes {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.perfilDetalhesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.perfilDetalhesHeader h2 {
+  font-family: "Oxanium";
+  font-size: 1.2rem;
+  color: var(--texto-primario);
+}
+
+.perfilEditBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(163,65,255,0.1);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  color: var(--cor-primaria);
+  font-family: "Inter";
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: auto;
+  box-shadow: none;
+}
+
+.perfilEditBtn:hover {
+  background: var(--cor-primaria);
+  color: white;
+  transform: none;
+}
+
+.perfilCampos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.perfilCampo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background: var(--bg-primario);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.perfilCampoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(163,65,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-primaria);
+  font-size: 0.9rem;
+}
+
+.perfilCampoInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.perfilCampoInfo label {
+  font-size: 0.7rem;
+  color: var(--texto-terciario);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.perfilCampoInfo span {
+  font-size: 0.9rem;
+  color: var(--texto-primario);
+}
+
+.perfilCampoInfo input {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--texto-primario);
+  font-family: "Inter";
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.perfilCampoInfo input:focus {
+  border-color: var(--cor-primaria);
+}
+
+.perfilSairBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: rgba(255,71,87,0.08);
+  border: 1px solid rgba(255,71,87,0.2);
+  border-radius: 12px;
+  color: var(--erro);
+  font-family: "Inter";
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: none;
+}
+
+.perfilSairBtn:hover {
+  background: var(--erro);
+  color: white;
+  transform: none;
+}

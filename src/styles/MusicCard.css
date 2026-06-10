@@ -1,0 +1,135 @@
+.musicCard {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  min-width: 170px;
+  background: var(--bg-card);
+  border-radius: 14px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.musicCard:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--borda);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.musicCardAtivo {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 25px rgba(163, 65, 255, 0.15);
+}
+
+.musicCardCapa {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.musicCardCapa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.musicCard:hover .musicCardCapa img {
+  transform: scale(1.05);
+}
+
+.musicCardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.musicCard:hover .musicCardOverlay {
+  opacity: 1;
+}
+
+.musicCardPlay {
+  width: 40px;
+  height: 40px;
+  background: var(--cor-primaria);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(163, 65, 255, 0.5);
+  padding: 12px;
+}
+
+.musicCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 38px;
+}
+
+.musicCardTitulo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-primario);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.musicCardArtista {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.musicCardFav {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  opacity: 0;
+  font-size: 0.8rem;
+}
+
+.musicCard:hover .musicCardFav {
+  opacity: 1;
+}
+
+.musicCardFav.favAtivo {
+  opacity: 1;
+  color: var(--cor-primaria);
+}
+
+.musicCardFav:hover {
+  color: var(--cor-primaria);
+  transform: scale(1.15);
+}

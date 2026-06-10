@@ -1,40 +1,111 @@
-aside{
-    display: flex;
-    flex-direction: column;
-    background-color: #140027;
-    width: 10%;
-    height: 100vh;
-    padding-left: 10px;
-    padding-right: 10px;    
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--bg-terciario) 0%, var(--bg-secundario) 100%);
+  width: 220px;
+  min-width: 220px;
+  height: calc(100vh - 80px);
+  padding: 24px 16px;
+  border-right: 1px solid var(--borda);
+  z-index: 10;
 }
 
-aside h1{
-    margin: 0;
-    font-family: "Oxanium";
-    color: #F3E7FF;
-    font-size: 5rem;
-    margin: 20px auto 10px 10px;
-    text-shadow: 0px 5px 0px #CC7EFC;
+.sidebarLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding-left: 8px;
 }
 
-aside li .linksSidebar{
-    font-size: 1.25rem;
-    list-style: none;
-    color: #F3E7FF;
-    text-decoration: none;
-    font-family: "Inter";
-    transition: ease 0.3s;  
+.sidebarLogo h1 {
+  font-family: "Oxanium";
+  color: var(--texto-primario);
+  font-size: 3rem;
+  line-height: 1;
+  text-shadow: 0px 3px 0px var(--cor-secundaria);
 }
 
-aside li .linksSidebar:hover{
-    color: #CC7EFC;
+.sidebarLogo span {
+  font-family: "Oxanium";
+  color: var(--cor-secundaria);
+  font-size: 0.75rem;
+  letter-spacing: 6px;
+  margin-top: 2px;
 }
 
-aside li{
-    margin-bottom: 28px;
-    list-style: none;
+.sidebarNav {
+  flex: 1;
 }
 
-aside ul{
-    padding: 0px 15px;
+.sidebarNav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebarNav li {
+  list-style: none;
+}
+
+.linksSidebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: var(--texto-secundario);
+  text-decoration: none;
+  font-family: "Inter";
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.linksSidebar:hover {
+  color: var(--texto-primario);
+  background: rgba(163, 65, 255, 0.1);
+}
+
+.linksSidebar.ativo {
+  color: var(--texto-primario);
+  background: linear-gradient(135deg, rgba(163, 65, 255, 0.2), rgba(204, 126, 252, 0.1));
+  box-shadow: 0 0 20px rgba(163, 65, 255, 0.1);
+}
+
+.linksSidebar.ativo svg {
+  color: var(--cor-primaria);
+}
+
+.linksSidebar svg {
+  font-size: 1.1rem;
+  width: 20px;
+}
+
+.sidebarBottom {
+  padding-top: 16px;
+  border-top: 1px solid var(--borda);
+}
+
+.btnSair {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--texto-terciario);
+  border: none;
+  cursor: pointer;
+  font-family: "Inter";
+  font-size: 0.9rem;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+.btnSair:hover {
+  color: var(--erro);
+  background: rgba(255, 71, 87, 0.1);
 }

@@ -1,0 +1,207 @@
+.inicioPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primario);
+  overflow-y: auto;
+}
+
+.inicioTopPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 30px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(10, 0, 21, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(45, 16, 80, 0.5);
+}
+
+.inputPesquisa {
+  display: flex;
+  gap: 10px;
+  width: 350px;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  align-items: center;
+  padding: 10px 16px;
+  color: var(--texto-terciario);
+  transition: all 0.25s ease;
+}
+
+.inputPesquisa:focus-within {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 20px rgba(163, 65, 255, 0.1);
+}
+
+.inputPesquisa input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--texto-primario);
+  font-family: "Inter";
+}
+
+.inputPesquisa input::placeholder {
+  color: var(--texto-terciario);
+}
+
+.inputPesquisa svg {
+  font-size: 1rem;
+}
+
+.perfilInicioTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.perfilInicioTop h2 {
+  font-family: "Oxanium";
+  font-size: 1.3rem;
+  color: var(--texto-primario);
+}
+
+.perfilAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oxanium";
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.inicioConteudo {
+  padding: 0 30px 100px 30px;
+}
+
+.bannerPrincipal {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bannerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(10, 0, 21, 0.9) 0%, rgba(10, 0, 21, 0.4) 60%, transparent 100%);
+  display: flex;
+  align-items: center;
+}
+
+.bannerTexto {
+  padding: 40px;
+  max-width: 500px;
+}
+
+.bannerTag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.bannerTexto h1 {
+  font-family: "Oxanium";
+  font-size: 3rem;
+  text-shadow: 0px 4px 0px var(--cor-destaque);
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.bannerTexto p {
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.bannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: "Inter";
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(163, 65, 255, 0.3);
+}
+
+.bannerBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(163, 65, 255, 0.5);
+}
+
+.secaoMusicas {
+  margin-bottom: 30px;
+}
+
+.secaoHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.secaoHeader h2 {
+  font-family: "Oxanium";
+  font-size: 1.4rem;
+  color: var(--texto-primario);
+}
+
+.secaoIcon {
+  color: var(--cor-primaria);
+  font-size: 1.2rem;
+}
+
+.musicScroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.musicScroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.musicGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}

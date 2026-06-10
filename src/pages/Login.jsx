@@ -2,16 +2,21 @@ import supabase from "../services/supabase"
 import "../styles/Login.css"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope, faLock, faMusic } from "@fortawesome/free-solid-svg-icons"
 
 function Login(){
-    const [email, setEmail] = useState()
-    const [senha, setSenha] = useState()
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [carregando, setCarregando] = useState(false)
     const navigate = useNavigate()
 
     async function realizarLogin(e){
         e.preventDefault()
-        if (!senha) {alert("Insira sua senha"); return}
         if (!email) {alert("Coloque um email"); return}
+        if (!senha) {alert("Insira sua senha"); return}
+
+        setCarregando(true)
 
         const {data: resposta, error} = await supabase
             .from("usuarios")
@@ -20,44 +25,75 @@ function Login(){
             .eq("email", email)
             .maybeSingle()
 
+        setCarregando(false)
+
         if (error){
-            alert("Erro: ", error)
+            alert("Erro ao realizar login")
             return
         }
 
         if (!resposta){
-            alert("Conta não localizada")
+            alert("Conta nao localizada")
             return
         }
 
-        alert("Login realizado com sucesso!")
-
-        const usuario = { email, senha, id: resposta.id }; 
+        const usuario = { email, id: resposta.id, nome: resposta.nome };
         localStorage.setItem("usuario", JSON.stringify(usuario))
 
         navigate("/inicio")
     }
 
     return(
-        <main>
-            <form action="submit" onSubmit={realizarLogin}>
-                <h1>Login</h1>
-                <div className="formInputs">
-                    <div className="inputBox">
-                        <label htmlFor="email">E-mail</label>
-                        <input value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="exemplo@gmail.com"/>
-                    </div>
-                    <div className="inputBox">
-                        <label htmlFor="password">Senha</label>
-                        <input value={senha} onChange={e => setSenha(e.target.value)} type="password" placeholder="Mínimo 8 caracteres"/>
-                    </div>
-                    <button>Fazer login</button>
-                    <div className="links">
-                        <Link className="link" to={"/cadastro"}>Realizar cadastro</Link>
-                        <Link className="link" to={"/redefinirsenha"}>Esqueci a senha</Link>
+        <main className="loginPage">
+            <div className="loginContainer">
+                <div className="loginLeft">
+                    <div className="loginBrand">
+                        <h1 className="loginLogoText">XP<span>MUSIC</span></h1>
+                        <p className="loginSlogan">Sua plataforma indie favorita</p>
                     </div>
                 </div>
-            </form>
+                <div className="loginRight">
+                    <form className="loginForm" onSubmit={realizarLogin}>
+                        <h2>Bem-vindo de volta</h2>
+                        <p className="loginSubtitle">Entre na sua conta para continuar</p>
+                        <div className="formInputs">
+                            <div className="inputBox">
+                                <label htmlFor="email">E-mail</label>
+                                <div className="inputWrapper">
+                                    <FontAwesomeIcon icon={faEnvelope} className="inputIcon" />
+                                    <input
+                                        id="email"
+                                        value={email}
+                                        onChange={e => setEmail(e.target.value)}
+                                        type="email"
+                                        placeholder="exemplo@gmail.com"
+                                    />
+                                </div>
+                            </div>
+                            <div className="inputBox">
+                                <label htmlFor="password">Senha</label>
+                                <div className="inputWrapper">
+                                    <FontAwesomeIcon icon={faLock} className="inputIcon" />
+                                    <input
+                                        id="password"
+                                        value={senha}
+                                        onChange={e => setSenha(e.target.value)}
+                                        type="password"
+                                        placeholder="Minimo 8 caracteres"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <button className="btnPrincipal" disabled={carregando}>
+                            {carregando ? "Entrando..." : "Fazer login"}
+                        </button>
+                        <div className="links">
+                            <Link className="link" to="/cadastro">Criar conta</Link>
+                            <Link className="link" to="/redefinirsenha">Esqueci a senha</Link>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </main>
     )
 }
