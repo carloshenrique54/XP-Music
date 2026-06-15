@@ -17,3 +17,27 @@
 .appConteudo.comSidebar {
   height: calc(100vh - 80px);
 }
+
+@media (max-width: 768px) {
+  .appLayout {
+    flex-direction: column;
+  }
+
+  .appConteudo {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .appConteudo.comSidebar {
+    height: calc(100vh - 60px);
+  }
+
+  /* Universal padding adjustments for all pages on mobile */
+  .inicioConteudo,
+  .explorarPage,
+  .favoritosPage,
+  .generosPage,
+  .perfilPage {
+    padding-bottom: 160px !important;
+  }
+}

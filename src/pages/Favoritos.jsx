@@ -96,7 +96,10 @@ function Favoritos() {
                                 <span className="favColNum">{index + 1}</span>
                                 <div className="favoritoInfo">
                                     <img src={fav.capa} alt={fav.titulo} className="favoritoCapa" />
-                                    <span className="favoritoTitulo">{fav.titulo}</span>
+                                    <div className="favoritoTextContainer">
+                                        <span className="favoritoTitulo">{fav.titulo}</span>
+                                        <span className="favoritoArtistaMobile">{fav.artista}</span>
+                                    </div>
                                 </div>
                                 <span className="favColArtista">{fav.artista}</span>
                                 <div className="favColAcoes">

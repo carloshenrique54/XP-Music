@@ -183,3 +183,75 @@
   color: white;
   transform: none;
 }
+
+.favoritoTextContainer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.favoritoArtistaMobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .favoritosPage {
+    padding: 0 16px 100px 16px;
+  }
+
+  .favoritosHeader {
+    gap: 12px;
+    padding: 20px 0;
+  }
+
+  .favoritosHeaderIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+  }
+
+  .favoritosHeader h1 {
+    font-size: 1.4rem;
+  }
+
+  .favoritosListaHeader {
+    grid-template-columns: 30px 1fr 80px;
+    padding: 8px;
+  }
+
+  .favoritoItem {
+    grid-template-columns: 30px 1fr 80px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .favColArtista {
+    display: none;
+  }
+
+  .favoritoArtistaMobile {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--texto-secundario);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+  }
+
+  .favoritoTitulo {
+    font-size: 0.85rem;
+  }
+
+  .favColNum {
+    font-size: 0.75rem;
+  }
+
+  .favBtnPlay, .favBtnRemover {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+  }
+}

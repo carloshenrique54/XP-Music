@@ -109,3 +109,60 @@
   color: var(--erro);
   background: rgba(255, 71, 87, 0.1);
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: 100%;
+    height: 60px;
+    flex-direction: row;
+    padding: 0;
+    border-right: none;
+    border-top: 1px solid var(--borda);
+    background: linear-gradient(90deg, var(--bg-terciario) 0%, var(--bg-secundario) 100%);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 110;
+  }
+
+  .sidebarLogo {
+    display: none;
+  }
+
+  .sidebarNav {
+    width: 100%;
+  }
+
+  .sidebarNav ul {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    gap: 0;
+  }
+
+  .linksSidebar {
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 0;
+    font-size: 0.7rem;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .linksSidebar.ativo {
+    color: var(--cor-primaria);
+  }
+
+  .linksSidebar svg {
+    font-size: 1.2rem;
+  }
+
+  .sidebarBottom {
+    display: none;
+  }
+}

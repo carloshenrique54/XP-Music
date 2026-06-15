@@ -2,7 +2,7 @@ import "../styles/Perfil.css"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUser, faEnvelope, faIdCard, faMapMarkerAlt, faSignOutAlt, faPen, faSave } from "@fortawesome/free-solid-svg-icons"
+import { faUser, faEnvelope, faIdCard, faMapMarkerAlt, faSignOutAlt, faPen, faSave, faCamera, faMusic, faClock } from "@fortawesome/free-solid-svg-icons"
 import supabase from "../services/supabase"
 
 function Perfil() {
@@ -12,6 +12,7 @@ function Perfil() {
     const [nome, setNome] = useState("")
     const [email, setEmail] = useState("")
     const [totalFavoritos, setTotalFavoritos] = useState(0)
+    const [carregandoAvatar, setCarregandoAvatar] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -44,6 +45,9 @@ function Perfil() {
     }
 
     async function salvarPerfil() {
+        if (!nome.trim()) { alert("O nome não pode ficar em branco."); return }
+        if (!email.trim()) { alert("O e-mail não pode ficar em branco."); return }
+
         const { error } = await supabase
             .from("usuarios")
             .update({ nome, email })
@@ -57,8 +61,58 @@ function Perfil() {
         const novoUsuario = { ...usuario, nome, email }
         localStorage.setItem("usuario", JSON.stringify(novoUsuario))
         setUsuario(novoUsuario)
+        setDadosCompletos(prev => ({ ...prev, nome, email }))
         setEditando(false)
         alert("Perfil atualizado")
+    }
+
+    async function lidarComUpload(e) {
+        const file = e.target.files?.[0]
+        if (!file) return
+
+        try {
+            setCarregandoAvatar(true)
+            const fileExt = file.name.split('.').pop()
+            const fileName = `${usuario.id}-${Date.now()}.${fileExt}`
+            const filePath = `${fileName}`
+
+            const { error: uploadError } = await supabase.storage
+                .from("avatars")
+                .upload(filePath, file, { cacheControl: '3600', upsert: true })
+
+            if (uploadError) {
+                console.error("Erro no upload:", uploadError)
+                alert("Erro ao fazer upload da imagem: " + uploadError.message)
+                return
+            }
+
+            const { data } = supabase.storage
+                .from("avatars")
+                .getPublicUrl(filePath)
+
+            const publicUrl = data.publicUrl
+
+            const { error: updateError } = await supabase
+                .from("usuarios")
+                .update({ avatar_url: publicUrl })
+                .eq("id", usuario.id)
+
+            if (updateError) {
+                alert("Erro ao salvar URL no perfil")
+                return
+            }
+
+            const novoUsuario = { ...usuario, avatar_url: publicUrl }
+            localStorage.setItem("usuario", JSON.stringify(novoUsuario))
+            setUsuario(novoUsuario)
+            setDadosCompletos(prev => ({ ...prev, avatar_url: publicUrl }))
+            alert("Foto de perfil atualizada!")
+        } catch (err) {
+            console.error(err)
+            alert("Erro ao fazer upload da foto.")
+        } finally {
+            setCarregandoAvatar(false)
+        }
     }
 
     function sair() {
@@ -78,15 +132,51 @@ function Perfil() {
         return cep.replace(/(\d{5})(\d{3})/, '$1-$2')
     }
 
+    function obterNivelUsuario(total) {
+        if (total === 0) return { titulo: "Silencioso", cor: "#7A6690" }
+        if (total < 5) return { titulo: "Ouvinte Casual", cor: "#4ECB71" }
+        if (total < 15) return { titulo: "Fã Independente", cor: "#CC7EFC" }
+        return { titulo: "Guru do Indie", cor: "#A341FF" }
+    }
+
+    const nivel = obterNivelUsuario(totalFavoritos)
+
     return (
         <main className="perfilPage">
+            <div className="perfilCover">
+                <div className="perfilCoverOverlay"></div>
+            </div>
+            
             <div className="perfilContainer">
                 <div className="perfilCard">
-                    <div className="perfilAvatarGrande">
-                        {dadosCompletos.nome?.[0]?.toUpperCase()}
+                    <div className="perfilAvatarGrandeContainer">
+                        <div className="perfilAvatarGrande">
+                            {dadosCompletos.avatar_url ? (
+                                <img src={dadosCompletos.avatar_url} alt={dadosCompletos.nome} className="perfilAvatarGrandeImg" />
+                            ) : (
+                                dadosCompletos.nome?.[0]?.toUpperCase()
+                            )}
+                            <label htmlFor="avatar-upload" className="perfilAvatarUploadLabel">
+                                <FontAwesomeIcon icon={faCamera} />
+                            </label>
+                        </div>
+                        <input
+                            type="file"
+                            id="avatar-upload"
+                            accept="image/*"
+                            style={{ display: "none" }}
+                            onChange={lidarComUpload}
+                            disabled={carregandoAvatar}
+                        />
+                        {carregandoAvatar && <div className="avatarLoadingGlow"></div>}
                     </div>
+
                     <h1>{dadosCompletos.nome}</h1>
+                    <span className="perfilNivelBadge" style={{ backgroundColor: nivel.cor + '22', color: nivel.cor, border: `1px solid ${nivel.cor}44` }}>
+                        {nivel.titulo}
+                    </span>
                     <p className="perfilEmail">{dadosCompletos.email}</p>
+                    
                     <div className="perfilStats">
                         <div className="perfilStat">
                             <span className="perfilStatNum">{totalFavoritos}</span>
@@ -97,7 +187,7 @@ function Perfil() {
 
                 <div className="perfilDetalhes">
                     <div className="perfilDetalhesHeader">
-                        <h2>Informacoes pessoais</h2>
+                        <h2>Informações Pessoais</h2>
                         <button className="perfilEditBtn" onClick={() => editando ? salvarPerfil() : setEditando(true)}>
                             <FontAwesomeIcon icon={editando ? faSave : faPen} />
                             {editando ? "Salvar" : "Editar"}

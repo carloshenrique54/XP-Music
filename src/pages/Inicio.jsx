@@ -1,6 +1,6 @@
 import "../styles/Inicio.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass, faPlay, faFire, faStar, faBolt } from "@fortawesome/free-solid-svg-icons"
+import { faMagnifyingGlass, faPlay, faGuitar, faMusic, faCloud } from "@fortawesome/free-solid-svg-icons"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { buscarMusicas, buscarMusicasPorGenero } from "../services/deezer"
@@ -90,7 +90,13 @@ function Inicio(){
                     />
                 </form>
                 <div className="perfilInicioTop">
-                    <div className="perfilAvatar">{primeiroNome[0]}</div>
+                    <div className="perfilAvatar">
+                        {usuario?.avatar_url ? (
+                            <img src={usuario.avatar_url} alt={primeiroNome} className="perfilAvatarImg" />
+                        ) : (
+                            primeiroNome[0]
+                        )}
+                    </div>
                     <h2>{primeiroNome}</h2>
                 </div>
             </div>
@@ -100,7 +106,7 @@ function Inicio(){
                     <img src={bannerImg} alt="XP Music Banner" className="bannerImg" />
                     <div className="bannerOverlay">
                         <div className="bannerTexto">
-                            <span className="bannerTag">PLATAFORMA INDIE</span>
+                            <span className="bannerTag">MUSICAS INDIE</span>
                             <h1>XP MUSIC</h1>
                             <p>Descubra o melhor da musica independente. Indie Rock, Dream Pop, Lo-Fi e muito mais.</p>
                             <button className="bannerBtn" onClick={() => navigate("/explorar")}>
@@ -133,7 +139,7 @@ function Inicio(){
 
                 <section className="secaoMusicas">
                     <div className="secaoHeader">
-                        <FontAwesomeIcon icon={faFire} className="secaoIcon" />
+                        <FontAwesomeIcon icon={faGuitar} className="secaoIcon" />
                         <h2>Indie Rock</h2>
                     </div>
                     <div className="musicScroll">
@@ -151,7 +157,7 @@ function Inicio(){
 
                 <section className="secaoMusicas">
                     <div className="secaoHeader">
-                        <FontAwesomeIcon icon={faStar} className="secaoIcon" />
+                        <FontAwesomeIcon icon={faMusic} className="secaoIcon" />
                         <h2>Indie Pop</h2>
                     </div>
                     <div className="musicScroll">
@@ -169,7 +175,7 @@ function Inicio(){
 
                 <section className="secaoMusicas">
                     <div className="secaoHeader">
-                        <FontAwesomeIcon icon={faBolt} className="secaoIcon" />
+                        <FontAwesomeIcon icon={faCloud} className="secaoIcon" />
                         <h2>Dream Pop</h2>
                     </div>
                     <div className="musicScroll">

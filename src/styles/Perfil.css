@@ -1,48 +1,140 @@
 .perfilPage {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   background: var(--bg-primario);
   overflow-y: auto;
-  padding: 30px 30px 100px 30px;
+  padding: 0 0 120px 0;
+}
+
+.perfilCover {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, var(--bg-terciario) 0%, var(--cor-destaque) 50%, var(--cor-primaria) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.perfilCoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, var(--bg-primario) 100%);
 }
 
 .perfilContainer {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: -100px auto 0 auto;
   width: 100%;
+  padding: 0 30px;
+  position: relative;
+  z-index: 2;
 }
 
 .perfilCard {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 20px;
-  padding: 36px 24px;
+  background: rgba(26, 0, 51, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(163, 65, 255, 0.15);
+  border-radius: 24px;
+  padding: 40px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   height: fit-content;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfilCard:hover {
+  border-color: rgba(163, 65, 255, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.perfilAvatarGrandeContainer {
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .perfilAvatarGrande {
-  width: 90px;
-  height: 90px;
-  border-radius: 24px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
   background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "Oxanium";
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 16px;
-  box-shadow: 0 8px 30px rgba(163,65,255,0.3);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border: 3px solid var(--borda);
+}
+
+.perfilAvatarGrandeImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfilAvatarUploadLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
+.perfilAvatarGrande:hover .perfilAvatarUploadLabel {
+  opacity: 1;
+}
+
+.avatarLoadingGlow {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 4px solid var(--cor-primaria);
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.perfilNivelBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .perfilCard h1 {
@@ -56,6 +148,7 @@
   color: var(--texto-secundario);
   font-size: 0.82rem;
   margin-bottom: 24px;
+  word-break: break-all;
 }
 
 .perfilStats {
@@ -87,10 +180,13 @@
 }
 
 .perfilDetalhes {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 20px;
-  padding: 30px;
+  background: rgba(26, 0, 51, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(163, 65, 255, 0.15);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .perfilDetalhesHeader {
@@ -112,7 +208,7 @@
   gap: 6px;
   padding: 8px 16px;
   background: rgba(163,65,255,0.1);
-  border: 1px solid var(--borda);
+  border: 1px solid rgba(163, 65, 255, 0.2);
   border-radius: 10px;
   color: var(--cor-primaria);
   font-family: "Inter";
@@ -127,6 +223,7 @@
   background: var(--cor-primaria);
   color: white;
   transform: none;
+  border-color: var(--cor-primaria);
 }
 
 .perfilCampos {
@@ -141,9 +238,15 @@
   align-items: center;
   gap: 16px;
   padding: 14px 16px;
-  background: var(--bg-primario);
+  background: rgba(20, 0, 39, 0.4);
   border: 1px solid var(--borda);
   border-radius: 12px;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.perfilCampo:hover {
+  border-color: rgba(163, 65, 255, 0.3);
+  background: rgba(20, 0, 39, 0.7);
 }
 
 .perfilCampoIcon {
@@ -178,7 +281,7 @@
 }
 
 .perfilCampoInfo input {
-  background: var(--bg-card);
+  background: rgba(10, 0, 21, 0.6);
   border: 1px solid var(--borda);
   border-radius: 8px;
   padding: 8px 12px;
@@ -186,10 +289,14 @@
   font-family: "Inter";
   font-size: 0.9rem;
   outline: none;
+  width: 100%;
+  margin-top: 4px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .perfilCampoInfo input:focus {
   border-color: var(--cor-primaria);
+  box-shadow: 0 0 10px rgba(163, 65, 255, 0.25);
 }
 
 .perfilSairBtn {
@@ -214,4 +321,44 @@
   background: var(--erro);
   color: white;
   transform: none;
+}
+
+@media (max-width: 768px) {
+  .perfilCover {
+    height: 150px;
+  }
+
+  .perfilContainer {
+    grid-template-columns: 1fr;
+    margin-top: -70px;
+    padding: 0 16px;
+    gap: 20px;
+  }
+
+  .perfilCard {
+    padding: 30px 20px;
+  }
+
+  .perfilDetalhes {
+    padding: 24px;
+  }
+
+  .perfilDetalhesHeader h2 {
+    font-size: 1.1rem;
+  }
+
+  .perfilCampo {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .perfilCampoIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
+  .perfilCampoInfo span {
+    font-size: 0.85rem;
+  }
 }
