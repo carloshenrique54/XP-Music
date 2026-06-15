@@ -2,6 +2,7 @@ import supabase from "../services/supabase"
 import "../styles/Login.css"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faLock, faMusic } from "@fortawesome/free-solid-svg-icons"
 
@@ -13,8 +14,8 @@ function Login(){
 
     async function realizarLogin(e){
         e.preventDefault()
-        if (!email) {alert("Coloque um email"); return}
-        if (!senha) {alert("Insira sua senha"); return}
+        if (!email) {toast.error("Coloque um email"); return}
+        if (!senha) {toast.error("Insira sua senha"); return}
 
         setCarregando(true)
 
@@ -28,18 +29,19 @@ function Login(){
         setCarregando(false)
 
         if (error){
-            alert("Erro ao realizar login")
+            toast.error("Erro ao realizar login")
             return
         }
 
         if (!resposta){
-            alert("Conta nao localizada")
+            toast.error("Conta nao localizada")
             return
         }
 
         const usuario = { email, id: resposta.id, nome: resposta.nome };
         localStorage.setItem("usuario", JSON.stringify(usuario))
 
+        toast.success("Login realizado com sucesso!")
         navigate("/inicio")
     }
 

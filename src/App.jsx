@@ -1,5 +1,6 @@
 import './styles/App.css'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 import { PlayerProvider } from './contexts/PlayerContext'
 
 import Login from './pages/Login.jsx'
@@ -21,6 +22,22 @@ function App() {
 
   return (
     <PlayerProvider>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            background: 'var(--bg-secundario)',
+            color: 'var(--texto-primario)',
+            border: '1px solid var(--borda)',
+          },
+          success: {
+            iconTheme: { primary: 'var(--cor-primaria)', secondary: 'var(--bg-secundario)' },
+          },
+          error: {
+            iconTheme: { primary: '#ff5c5c', secondary: 'var(--bg-secundario)' },
+          },
+        }}
+      />
       <div className="appLayout">
         {mostrarSidebar && <SideBar />}
         <div className={`appConteudo ${mostrarSidebar ? 'comSidebar' : ''}`}>

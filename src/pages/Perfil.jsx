@@ -1,6 +1,7 @@
 import "../styles/Perfil.css"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser, faEnvelope, faIdCard, faMapMarkerAlt, faSignOutAlt, faPen, faSave, faCamera, faMusic, faClock } from "@fortawesome/free-solid-svg-icons"
 import supabase from "../services/supabase"
@@ -45,8 +46,8 @@ function Perfil() {
     }
 
     async function salvarPerfil() {
-        if (!nome.trim()) { alert("O nome não pode ficar em branco."); return }
-        if (!email.trim()) { alert("O e-mail não pode ficar em branco."); return }
+        if (!nome.trim()) { toast.error("O nome não pode ficar em branco."); return }
+        if (!email.trim()) { toast.error("O e-mail não pode ficar em branco."); return }
 
         const { error } = await supabase
             .from("usuarios")
@@ -54,7 +55,7 @@ function Perfil() {
             .eq("id", usuario.id)
 
         if (error) {
-            alert("Erro ao salvar")
+            toast.error("Erro ao salvar")
             return
         }
 
@@ -63,7 +64,7 @@ function Perfil() {
         setUsuario(novoUsuario)
         setDadosCompletos(prev => ({ ...prev, nome, email }))
         setEditando(false)
-        alert("Perfil atualizado")
+        toast.success("Perfil atualizado")
     }
 
     async function lidarComUpload(e) {
@@ -82,7 +83,7 @@ function Perfil() {
 
             if (uploadError) {
                 console.error("Erro no upload:", uploadError)
-                alert("Erro ao fazer upload da imagem: " + uploadError.message)
+                toast.error("Erro ao fazer upload da imagem: " + uploadError.message)
                 return
             }
 
@@ -98,7 +99,7 @@ function Perfil() {
                 .eq("id", usuario.id)
 
             if (updateError) {
-                alert("Erro ao salvar URL no perfil")
+                toast.error("Erro ao salvar URL no perfil")
                 return
             }
 
@@ -106,10 +107,10 @@ function Perfil() {
             localStorage.setItem("usuario", JSON.stringify(novoUsuario))
             setUsuario(novoUsuario)
             setDadosCompletos(prev => ({ ...prev, avatar_url: publicUrl }))
-            alert("Foto de perfil atualizada!")
+            toast.success("Foto de perfil atualizada!")
         } catch (err) {
             console.error(err)
-            alert("Erro ao fazer upload da foto.")
+            toast.error("Erro ao fazer upload da foto.")
         } finally {
             setCarregandoAvatar(false)
         }

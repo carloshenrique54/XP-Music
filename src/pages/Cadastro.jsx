@@ -1,6 +1,7 @@
 import "../styles/Cadastro.css"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 import supabase from "../services/supabase"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser, faEnvelope, faMapMarkerAlt, faIdCard, faLock, faMusic } from "@fortawesome/free-solid-svg-icons"
@@ -40,13 +41,13 @@ function Cadastro(){
 
     async function realizarCadastro(e){
         e.preventDefault()
-        if (!nome){alert("Insira seu nome"); return}
-        if (!email){alert("Insira seu e-mail"); return}
-        if (!cep){alert("Insira seu cep valido"); return}
-        if (!cepCerto){alert("Insira seu cep valido"); return}
-        if (cpf.length < 14){alert("Insira um CPF valido"); return}
-        if (senha.length < 8){alert("A senha precisa ter 8 caracteres"); return}
-        if (senhaConfirmar !== senha){alert("As senhas nao coincidem"); return}
+        if (!nome){toast.error("Insira seu nome"); return}
+        if (!email){toast.error("Insira seu e-mail"); return}
+        if (!cep){toast.error("CEP invalido"); return}
+        if (!cepCerto){toast.error("CEP invalido"); return}
+        if (cpf.length < 14){toast.error("Insira um CPF valido"); return}
+        if (senha.length < 8){toast.error("A senha precisa ter 8 caracteres"); return}
+        if (senhaConfirmar !== senha){toast.error("As senhas nao coincidem"); return}
 
         const cpfLimpo = cpf.replace(/\D/g, '');
         const cepLimpo = cep.replace(/\D/g, '');
@@ -60,11 +61,11 @@ function Cadastro(){
         setCarregando(false)
 
         if (error){
-            alert("Erro ao cadastrar")
+            toast.error("Erro ao cadastrar")
             return
         }
 
-        alert("Cadastro realizado com sucesso! Faca login")
+        toast.success("Cadastro realizado com sucesso! Faca login")
         navigate("/")
     }
 
@@ -76,6 +77,7 @@ function Cadastro(){
                 .then(dados => {
                     if (dados.erro){
                         setCepCerto(false)
+                        toast.error("CEP invalido")
                     } else {
                         setCepCerto(true)
                     }

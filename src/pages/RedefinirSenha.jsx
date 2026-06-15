@@ -2,6 +2,7 @@ import supabase from "../services/supabase"
 import "../styles/Login.css"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope, faLock, faMusic, faKey } from "@fortawesome/free-solid-svg-icons"
 
@@ -13,9 +14,9 @@ function RedefinirSenha(){
 
     async function mudarSenha(e){
         e.preventDefault()
-        if (!email) {alert("Coloque um email"); return}
-        if (!senha) {alert("Coloque sua nova senha"); return}
-        if (senha.length < 8) {alert("A senha precisa ter 8 caracteres"); return}
+        if (!email) {toast.error("Coloque um email"); return}
+        if (!senha) {toast.error("Coloque sua nova senha"); return}
+        if (senha.length < 8) {toast.error("A senha precisa ter 8 caracteres"); return}
 
         setCarregando(true)
 
@@ -27,11 +28,11 @@ function RedefinirSenha(){
         setCarregando(false)
 
         if (error){
-            alert("Erro ao redefinir senha")
+            toast.error("Erro ao redefinir senha")
             return
         }
 
-        alert("Senha alterada com sucesso")
+        toast.success("Senha alterada com sucesso")
         navigate("/")
     }
 
